@@ -10,12 +10,12 @@ export function ResponseDisplay({
   response,
 }: ResponseDisplayProps) {
   return (
-    <div className="flex flex-col gap-2 border-l-2 border-border pl-4">
-      <span className="font-mono text-[11px] uppercase tracking-console text-steel">
+    <div className="flex flex-1 flex-col gap-2 border-l-2 border-border pl-4 sm:min-h-0">
+      <span className="shrink-0 font-mono text-[11px] uppercase tracking-console text-steel">
         03 <span className="text-accent">Output</span>
       </span>
 
-      <div className="min-h-[10rem] whitespace-pre-wrap rounded-sm border border-border bg-surface px-4 py-4 text-sm text-white/90">
+      <div className="console-scroll min-h-[10rem] flex-1 overflow-y-auto whitespace-pre-wrap rounded-sm border border-border bg-surface px-4 py-4 text-sm text-white/90 sm:min-h-0">
         {isLoading && (
           <div className="flex items-center gap-3 text-steel">
             <span className="signal-meter" aria-hidden="true">

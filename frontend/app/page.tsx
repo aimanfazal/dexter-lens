@@ -32,9 +32,9 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-12 sm:py-16">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-6 sm:h-screen sm:overflow-hidden sm:py-8">
       {/* Status bar */}
-      <div className="mb-6 flex items-center justify-between border-b border-border pb-3 font-mono text-[11px] uppercase tracking-console text-steel">
+      <div className="mb-4 flex shrink-0 items-center justify-between border-b border-border pb-3 font-mono text-[11px] uppercase tracking-console text-steel">
         <span className="flex items-center gap-2">
           <span className="rec-dot h-1.5 w-1.5 rounded-full bg-signal" />
           Rec
@@ -42,11 +42,11 @@ export default function Home() {
         <span>Signal console // model pt&#8209;7</span>
       </div>
 
-      <div className="console-frame border border-border bg-surface/40 px-6 py-8 sm:px-10 sm:py-10">
+      <div className="console-frame flex flex-1 flex-col border border-border bg-surface/40 px-6 py-6 sm:min-h-0 sm:px-10 sm:py-8">
         <span className="bracket-tr" aria-hidden="true" />
         <span className="bracket-bl" aria-hidden="true" />
 
-        <header className="mb-10 flex flex-col gap-2">
+        <header className="mb-6 flex shrink-0 flex-col gap-2">
           <h1 className="phosphor-glow text-3xl font-bold tracking-tight text-white">
             PROMPT<span className="text-accent">[TUBE]</span>
           </h1>
@@ -55,16 +55,18 @@ export default function Home() {
           </p>
         </header>
 
-        <PromptForm
-          youtubeUrl={youtubeUrl}
-          prompt={prompt}
-          isLoading={isLoading}
-          onYoutubeUrlChange={setYoutubeUrl}
-          onPromptChange={setPrompt}
-          onSubmit={handleSubmit}
-        />
+        <div className="shrink-0">
+          <PromptForm
+            youtubeUrl={youtubeUrl}
+            prompt={prompt}
+            isLoading={isLoading}
+            onYoutubeUrlChange={setYoutubeUrl}
+            onPromptChange={setPrompt}
+            onSubmit={handleSubmit}
+          />
+        </div>
 
-        <div className="mt-10">
+        <div className="mt-6 flex flex-1 flex-col sm:min-h-0">
           <ResponseDisplay isLoading={isLoading} error={error} response={response} />
         </div>
       </div>
