@@ -5,19 +5,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // A single restrained accent, used sparingly (the "Generate" button,
-        // focus rings, and the terminal-style prompt markers).
+        // A single restrained accent — amber phosphor, used sparingly (the
+        // "Decode signal" button, focus rings, station labels, and glow).
         accent: {
-          DEFAULT: "#5B5BD6",
-          hover: "#4747c2",
+          DEFAULT: "#FF9F1C",
+          hover: "#FFB74D",
         },
-        canvas: "#0f1115",
-        surface: "#161922",
-        border: "#262b38",
+        canvas: "#0C1116",
+        surface: "#12181F",
+        border: "#2A343E",
+        // Muted instrument-panel label color and the error/alert color.
+        steel: "#9AA7B2",
+        signal: "#E5484D",
       },
       fontFamily: {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
+      },
+      letterSpacing: {
+        console: "0.16em",
+      },
+      boxShadow: {
+        glow: "0 0 16px rgba(255, 159, 28, 0.35)",
       },
     },
   },
