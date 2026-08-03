@@ -19,13 +19,13 @@ export function PromptForm({
 }: PromptFormProps) {
   return (
     <form
-      className="flex flex-col gap-6"
+      className="flex flex-col gap-4"
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit();
       }}
     >
-      <div className="flex flex-col gap-2 border-l-2 border-border pl-4">
+      <div className="flex flex-col gap-1.5 border-l-2 border-border pl-4">
         <label
           htmlFor="youtube-url"
           className="font-mono text-[11px] uppercase tracking-console text-steel"
@@ -40,11 +40,11 @@ export function PromptForm({
           value={youtubeUrl}
           disabled={isLoading}
           onChange={(e) => onYoutubeUrlChange(e.target.value)}
-          className="w-full rounded-sm border border-border bg-surface px-4 py-3 font-mono text-sm text-white placeholder:text-white/30 disabled:opacity-50"
+          className="w-full rounded-sm border border-border bg-surface px-4 py-2.5 font-mono text-sm text-white placeholder:text-white/30 disabled:opacity-50"
         />
       </div>
 
-      <div className="flex flex-col gap-2 border-l-2 border-border pl-4">
+      <div className="flex flex-col gap-1.5 border-l-2 border-border pl-4">
         <label
           htmlFor="prompt"
           className="font-mono text-[11px] uppercase tracking-console text-steel"
@@ -54,19 +54,19 @@ export function PromptForm({
         </label>
         <textarea
           id="prompt"
-          rows={4}
+          rows={2}
           placeholder="Generate a concise summary of this video."
           value={prompt}
           disabled={isLoading}
           onChange={(e) => onPromptChange(e.target.value)}
-          className="w-full resize-y rounded-sm border border-border bg-surface px-4 py-3 text-sm text-white placeholder:text-white/30 disabled:opacity-50"
+          className="w-full resize-y rounded-sm border border-border bg-surface px-4 py-2.5 text-sm text-white placeholder:text-white/30 disabled:opacity-50"
         />
       </div>
 
       <button
         type="submit"
         disabled={isLoading}
-        className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-4 py-3 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-8"
+        className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-2.5 py-2 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-3"
       >
         <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
           ▶
