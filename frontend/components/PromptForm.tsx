@@ -25,9 +25,12 @@ export function PromptForm({
         onSubmit();
       }}
     >
-      <div className="flex flex-col gap-2">
-        <label htmlFor="youtube-url" className="font-mono text-sm text-accent">
-          <span className="text-white/40">$</span> youtube_url
+      <div className="flex flex-col gap-2 border-l-2 border-border pl-4">
+        <label
+          htmlFor="youtube-url"
+          className="font-mono text-[11px] uppercase tracking-console text-steel"
+        >
+          01 <span className="text-accent">Source signal</span>
         </label>
         <input
           id="youtube-url"
@@ -37,14 +40,17 @@ export function PromptForm({
           value={youtubeUrl}
           disabled={isLoading}
           onChange={(e) => onYoutubeUrlChange(e.target.value)}
-          className="w-full rounded-md border border-border bg-surface px-4 py-3 font-mono text-sm text-white placeholder:text-white/30 disabled:opacity-50"
+          className="w-full rounded-sm border border-border bg-surface px-4 py-3 font-mono text-sm text-white placeholder:text-white/30 disabled:opacity-50"
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="prompt" className="font-mono text-sm text-accent">
-          <span className="text-white/40">$</span> prompt{" "}
-          <span className="text-white/30">(optional)</span>
+      <div className="flex flex-col gap-2 border-l-2 border-border pl-4">
+        <label
+          htmlFor="prompt"
+          className="font-mono text-[11px] uppercase tracking-console text-steel"
+        >
+          02 <span className="text-accent">Query</span>{" "}
+          <span className="normal-case text-white/30">(optional)</span>
         </label>
         <textarea
           id="prompt"
@@ -53,16 +59,19 @@ export function PromptForm({
           value={prompt}
           disabled={isLoading}
           onChange={(e) => onPromptChange(e.target.value)}
-          className="w-full resize-y rounded-md border border-border bg-surface px-4 py-3 text-sm text-white placeholder:text-white/30 disabled:opacity-50"
+          className="w-full resize-y rounded-sm border border-border bg-surface px-4 py-3 text-sm text-white placeholder:text-white/30 disabled:opacity-50"
         />
       </div>
 
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full rounded-md bg-accent px-4 py-3 font-medium text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-8"
+        className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-4 py-3 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-8"
       >
-        {isLoading ? "Generating…" : "Generate"}
+        <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+          ▶
+        </span>
+        {isLoading ? "Decoding…" : "Decode signal"}
       </button>
     </form>
   );
