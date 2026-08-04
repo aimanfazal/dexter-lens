@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import { extractYouTubeId } from "@/lib/youtube";
+
 interface PromptFormProps {
   youtubeUrl: string;
   prompt: string;
   isLoading: boolean;
+  hasResponse: boolean;
   onYoutubeUrlChange: (value: string) => void;
   onPromptChange: (value: string) => void;
   onSubmit: () => void;
@@ -13,10 +17,16 @@ export function PromptForm({
   youtubeUrl,
   prompt,
   isLoading,
+  hasResponse,
   onYoutubeUrlChange,
   onPromptChange,
   onSubmit,
 }: PromptFormProps) {
+  const [thumbnailFailed, setThumbnailFailed] = useState(false);
+
+  const videoId = hasResponse ? extractYouTubeId(youtubeUrl) : null;
+  const showThumbnail = hasResponse && !!videoId && !thumbnailFailed;
+
   return (
     <form
       className="flex flex-col gap-4"
@@ -63,16 +73,28 @@ export function PromptForm({
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-2.5 py-2 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-3"
-      >
-        <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-          ▶
-        </span>
-        {isLoading ? "Decoding…" : "Decode signal"}
-      </button>
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-2.5 py-2 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-3"
+        >
+          <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+            ▶
+          </span>
+          {isLoading ? "Decoding…" : "Decode signal"}
+        </button>
+
+        {showThumbnail && (
+          <img
+            src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+            alt="Source video thumbnail"
+            loading="lazy"
+            onError={() => setThumbnailFailed(true)}
+            className="aspect-video h-14 rounded-sm border border-border object-cover sm:h-16"
+          />
+        )}
+      </div>
     </form>
   );
 }

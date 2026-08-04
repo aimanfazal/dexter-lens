@@ -12,6 +12,8 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [response, setResponse] = useState<string | null>(null);
 
+  const hasResponse = !isLoading && !error && !!response;
+
   async function handleSubmit() {
     setIsLoading(true);
     setError(null);
@@ -61,6 +63,7 @@ export default function Home() {
             youtubeUrl={youtubeUrl}
             prompt={prompt}
             isLoading={isLoading}
+            hasResponse={hasResponse}
             onYoutubeUrlChange={setYoutubeUrl}
             onPromptChange={setPrompt}
             onSubmit={handleSubmit}
