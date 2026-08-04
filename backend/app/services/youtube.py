@@ -11,6 +11,7 @@ from youtube_transcript_api import (
     TranscriptsDisabled,
     VideoUnavailable,
     YouTubeTranscriptApi,
+    RequestBlocked,
 )
 
 # Matches the video ID out of the common YouTube URL shapes:
@@ -61,6 +62,12 @@ def get_transcript(video_id: str) -> str:
         raise TranscriptUnavailableError(
             "That video couldn't be found. It may be private, deleted, or "
             "the URL may be incorrect."
+        ) from exc
+
+    except RequestBlocked as exc:
+        raise TranscriptUnavailableError(
+            "YouTube blocked transcript retrieval from the deployment server. "
+            "This is a limitation of the hosting environment, not your video."
         ) from exc
 
     full_text = " ".join(
