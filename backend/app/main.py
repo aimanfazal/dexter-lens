@@ -1,7 +1,12 @@
 """FastAPI application entrypoint.
 
-Run with:  uvicorn app.main:app --reload
+Local development:
+uvicorn app.main:app --reload
 (from inside the backend/ directory, with your virtualenv activated)
+
+Production (Render):
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
 """
 
 import os
@@ -37,3 +42,11 @@ app.include_router(generate_router)
 def health_check() -> dict[str, str]:
     """Simple endpoint to confirm the server is running."""
     return {"status": "ok"}
+
+@app.get("/")
+def root():
+    return {
+        "message": "PromptTube API is running 🚀",
+        "docs": "/docs",
+        "health": "/health"
+    }
