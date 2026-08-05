@@ -2,61 +2,79 @@
 
 # 🎥 PromptTube
 
-### 💬 Chat with any YouTube video using its transcript
+### AI-powered conversations with any YouTube video
 
-Paste a YouTube URL, ask a question, and receive AI-generated responses grounded entirely in the video's transcript — presented through a retro-futurist "signal console" interface.
+Turn YouTube videos and Shorts into interactive, promptable knowledge. Paste a YouTube URL, ask a question, and receive AI-generated responses grounded entirely in the video's transcript through a retro-futuristic signal console interface.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=nextdotjs">
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white">
-  <img src="https://img.shields.io/badge/Groq-LLM-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Supadata-Transcript_API-6E56CF?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Groq-Llama_3.3-orange?style=for-the-badge">
   <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
   <img src="https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+</p>
+
+<p align="center">
+  <a href="https://prompt-tube.vercel.app"><strong>Live Demo</strong></a>
+  •
+  <a href="https://prompt-tube.onrender.com/docs"><strong>API Docs</strong></a>
+  •
+  <a href="https://github.com/aimanfazal/prompt-tube/issues"><strong>Report Bug</strong></a>
 </p>
 
 </div>
 
 ---
 
-## 📖 Overview
+## Overview
 
-PromptTube is a lightweight full-stack AI application that allows users to interact with YouTube videos through natural language.
+PromptTube is a full-stack AI application that transforms YouTube videos into interactive, promptable knowledge.
 
-The application extracts captions directly from YouTube videos and uses an LLM to generate answers strictly grounded in the transcript content.
+Instead of searching through an entire video manually, simply paste a YouTube video (or Shorts) URL, provide an optional prompt, and PromptTube will retrieve the transcript, combine it with your request, and generate responses grounded entirely in the video's content.
 
-Simply:
-
-1. Paste a YouTube URL
-2. Ask a question (optional)
-3. Get an AI-generated answer based on the video's transcript
+The application uses the **Supadata API** for transcript retrieval and **Groq's Llama 3.3** models for AI-powered responses.
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 <div align="center">
-  <img src="docs/screenshots/prompttube-v2.png" width="720" alt="PromptTube signal console UI">
+  <img src="docs/screenshots/prompttube-v2.png" width="900" alt="PromptTube signal console UI">
 </div>
 
-> Replace the placeholder path above with your own capture — the console fits the full viewport by design, so a full-window screenshot at ~1440px wide shows it best.
+> A short demo GIF will be added in a future release.
 
 ---
 
-## ✨ Features
+## Features
 
-- ✅ YouTube transcript extraction
-- ✅ Natural language querying
-- ✅ Transcript-grounded responses
-- ✅ Markdown formatted output
-- ✅ Fast API responses via Groq
-- ✅ Retro-futurist "signal console" UI, built with Tailwind
-- ✅ Viewport-fit layout — no page scroll, only the response panel scrolls
-- ✅ One-click copy and PDF export of any generated response
-- ✅ Fully typed backend schemas with Pydantic
+- Transcript retrieval using the Supadata API
+- Support for YouTube videos and Shorts
+- AI-powered summaries and custom prompts
+- Transcript-grounded responses
+- Markdown-formatted output
+- One-click copy and PDF export
+- Responsive retro-futuristic signal console interface
+- Fully typed FastAPI backend using Pydantic
+- Production deployment on Vercel and Render
 
 ---
 
-## 🏗️ Architecture
+## Tech Stack
+
+| Layer | Technology |
+|--------|------------|
+| Frontend | Next.js 15, React, TypeScript |
+| Styling | Tailwind CSS |
+| Backend | FastAPI, Python |
+| Transcript API | Supadata |
+| AI | Groq (Llama 3.3) |
+| Deployment | Vercel, Render |
+
+---
+
+## Architecture
 
 <details>
 <summary><strong>Click to expand — request flow and system diagram</strong></summary>
@@ -65,43 +83,52 @@ Simply:
 
 ```text
 User Input
-    ↓
+      │
+      ▼
 Next.js Frontend
-    ↓
+      │
+      ▼
 FastAPI Backend
-    ↓
-YouTube Transcript API
-    ↓
+      │
+      ▼
+Supadata API
+      │
+      ▼
 Prompt Construction
-    ↓
-Groq LLM API
-    ↓
+      │
+      ▼
+Groq Llama API
+      │
+      ▼
 Generated Response
+      │
+      ▼
+Frontend Console
 ```
 
-**Processing flow:**
+### Processing Flow
 
-1. User submits a YouTube URL and optional prompt.
-2. Frontend sends a request to `POST /generate`.
-3. Backend extracts the video ID.
-4. Transcript is fetched using `youtube-transcript-api`.
-5. Prompt and transcript are merged into a single context.
-6. Request is sent to Groq's OpenAI-compatible API.
-7. Generated response is returned to the frontend, rendered in the console's `03 OUTPUT` panel.
+1. User submits a YouTube video or Shorts URL along with an optional prompt.
+2. The frontend sends a `POST /generate` request.
+3. The backend extracts the video ID.
+4. The transcript is retrieved from the Supadata API.
+5. The transcript and prompt are combined into a single context.
+6. The request is sent to Groq's OpenAI-compatible API.
+7. The generated response is returned to the frontend and rendered inside the output panel.
 
 </details>
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 <details>
-<summary><strong>Click to expand — full directory layout</strong></summary>
+<summary><strong>Click to expand — repository layout</strong></summary>
 
 <br>
 
 ```text
-prompttube/
+prompt-tube/
 │
 ├── backend/
 │   ├── app/
@@ -117,14 +144,9 @@ prompttube/
 │
 ├── frontend/
 │   ├── app/
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx
 │   ├── components/
-│   │   ├── PromptForm.tsx
-│   │   └── ResponseDisplay.tsx
 │   ├── lib/
-│   ├── tailwind.config.ts
+│   ├── public/
 │   └── .env.local.example
 │
 ├── docs/
@@ -137,14 +159,14 @@ prompttube/
 
 ---
 
-## ⚙️ Setup
+## Local Setup
 
 <details>
 <summary><strong>Click to expand — backend setup</strong></summary>
 
 <br>
 
-### 1️⃣ Create a Virtual Environment
+### 1. Create a virtual environment
 
 ```bash
 cd backend
@@ -153,41 +175,38 @@ py -3.12 -m venv venv
 source venv/Scripts/activate
 ```
 
-### 2️⃣ Install Dependencies
+### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Configure Environment Variables
+### 3. Configure environment variables
 
 ```bash
 copy .env.example .env
 ```
 
-Add your Groq API key:
-
 ```env
-GROQ_API_KEY=your_api_key_here
+SUPADATA_API_KEY=your_supadata_api_key
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=llama-3.3-70b-versatile
+FRONTEND_ORIGIN=http://localhost:3000
 ```
 
-You can get a free API key from:
-
-https://console.groq.com/keys
-
-### 4️⃣ Start the Backend
+### 4. Start the backend
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --reload-dir app
 ```
 
-Backend runs on:
+Backend
 
 ```text
 http://localhost:8000
 ```
 
-Swagger documentation:
+API Documentation
 
 ```text
 http://localhost:8000/docs
@@ -200,28 +219,31 @@ http://localhost:8000/docs
 
 <br>
 
-### 1️⃣ Install Dependencies
+### 1. Install dependencies
 
 ```bash
 cd frontend
+
 npm install
 ```
 
-This includes `jspdf`, used for the console's PDF export button.
-
-### 2️⃣ Configure Environment Variables
+### 2. Configure environment variables
 
 ```bash
 copy .env.local.example .env.local
 ```
 
-### 3️⃣ Start Development Server
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+```
+
+### 3. Start the development server
 
 ```bash
 npm run dev
 ```
 
-Frontend runs on:
+Frontend
 
 ```text
 http://localhost:3000
@@ -231,71 +253,75 @@ http://localhost:3000
 
 ---
 
-## 🚧 Limitations
+## Deployment
 
-Current version intentionally excludes:
+PromptTube is deployed as a split full-stack application.
 
-- Authentication
-- Persistent chat history
-- Multi-video conversations
-- Database storage
-- Caching
-- Docker deployment
-- CI/CD pipelines
-
-These are explicit non-goals for `v0.1`.
+| Service | Platform |
+|----------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Transcript API | Supadata |
+| AI Model | Groq |
 
 ---
 
-## 🚀 Future Improvements
+## Roadmap
 
-- 📚 Saved conversations
-- 🎥 Multi-video context support
-- 📝 Study notes mode
-- 📄 Report generation mode
-- ❓ Quiz generation mode
-- 🧠 Semantic transcript search
-- ☁️ Cloud deployment
+Planned improvements for future releases include:
+
+- Navigation bar and footer
+- Video metadata preview
+- Response statistics
+- Multiple console themes
+- Saved conversations
+- Semantic transcript search
+- Study mode
+- Quiz generation
+- Timestamp-aware responses
+- Progressive Web App (PWA)
 
 ---
 
-## 🤖 Development Process
+## Development Process
 
-PromptTube was built using an AI-assisted development workflow ("vibe coding") combined with manual integration, debugging, and architecture decisions.
+PromptTube was built using an AI-assisted development workflow ("vibe coding") combined with manual engineering, debugging, deployment, and architectural decisions.
 
-The project involved solving issues such as:
+Some of the challenges solved during development include:
 
-- Breaking API changes in `youtube-transcript-api`
-- Dependency conflicts between `openai` and `httpx`
+- Migrating from `youtube-transcript-api` to Supadata due to cloud IP restrictions
+- Integrating Groq's OpenAI-compatible API
+- Handling CORS between Vercel and Render
 - Prompt construction and transcript grounding
-- Frontend-backend integration
-- Reworking the frontend into a single-viewport, no-scroll console layout with an internally scrollable output panel
+- Responsive terminal-inspired interface design
+- Production deployment across multiple platforms
 
 ---
 
-## 📜 License
+## Contributing
+
+Contributions, bug reports, feature requests, and documentation improvements are always welcome.
+
+If you'd like to contribute:
+
+- Fork the repository
+- Create a feature branch
+- Commit your changes
+- Open a Pull Request
+
+Small, focused contributions are the easiest to review and merge.
+
+---
+
+## License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 🙌 Contributing
-
-PromptTube started as a small personal build, and it's very much open to outside eyes. If you're a curious visitor who stumbled in from a star, a search, or a link — you're welcome here, whether this is your first pull request or your five-hundredth.
-
-Good places to start:
-
-- Skim the [Future Improvements](#-future-improvements) list above and pick something that interests you.
-- Open an issue if you spot a bug, an unclear setup step, or a rough edge in the console UI.
-- Fork the repo, make your change, and open a pull request — small, focused PRs are easiest to review and merge.
-
-There's no formal contribution template yet; a clear description of what changed and why is enough to get started.
-
----
-
 <div align="center">
 
-## 👨‍💻 Author
+## Author
 
 ### Aiman Fazal
 
@@ -303,6 +329,8 @@ There's no formal contribution template yet; a clear description of what changed
   <img src="https://img.shields.io/badge/GitHub-aimanfazal-black?style=for-the-badge&logo=github">
 </a>
 
-### ⭐ If you found this project interesting, consider starring the repository!
+<br><br>
+
+⭐ If you found PromptTube useful, consider giving the repository a star!
 
 </div>
