@@ -15,6 +15,7 @@ import os
 import re
 
 from supadata import Supadata, SupadataError
+from urllib.parse import urlparse, parse_qs
 
 # Matches the video ID out of the common YouTube URL shapes:
 #   https://www.youtube.com/watch?v=VIDEOID
@@ -34,19 +35,27 @@ class TranscriptUnavailableError(Exception):
     """Raised when a video has no usable transcript/captions."""
 
 
-def extract_video_id(youtube_url: str) -> str:
-    """Pull the 11-character video ID out of a YouTube URL.
 
-    Raises InvalidYouTubeURLError if the URL doesn't look like YouTube.
-    """
-    match = _YOUTUBE_ID_PATTERN.search(youtube_url.strip())
-    if not match:
-        raise InvalidYouTubeURLError(
-            "That doesn't look like a valid YouTube URL. "
-            "Expected something like https://www.youtube.com/watch?v=... "
-            "or https://youtu.be/..."
-        )
-    return match.group(1)
+def extract_video_id(youtube_url: str) -> str:
+    parsed = urlparse(youtube_url)
+
+    # youtu.be/<id>
+    if parsed.netloc == "youtu.be":
+        return parsed.path.lstrip("/")
+
+    # youtube.com/watch?v=<id>
+    if parsed.path == "/watch":
+        return parse_qs(parsed.query)["v"][0]
+
+    # youtube.com/shorts/<id>
+    if parsed.path.startswith("/shorts/"):
+        return parsed.path.split("/")[2]
+
+    # youtube.com/embed/<id>
+    if parsed.path.startswith("/embed/"):
+        return parsed.path.split("/")[2]
+
+    raise InvalidYouTubeURLError("Invalid YouTube URL")
 
 
 def _get_client() -> Supadata:
