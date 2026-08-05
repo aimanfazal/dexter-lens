@@ -2,17 +2,19 @@
 
 This module intentionally does ONE thing: given a URL, return the transcript
 text (or raise a clear, specific exception explaining what went wrong).
+
+Transcript retrieval is delegated to Supadata (https://supadata.ai) rather
+than scraping YouTube directly. YouTube blocks most cloud-provider IPs from
+the endpoints youtube-transcript-api relies on, which breaks retrieval as
+soon as this service runs somewhere other than a residential connection.
+Supadata handles that on their end, so this module only has to make a
+regular API call.
 """
 
+import os
 import re
 
-from youtube_transcript_api import (
-    NoTranscriptFound,
-    TranscriptsDisabled,
-    VideoUnavailable,
-    YouTubeTranscriptApi,
-    RequestBlocked,
-)
+from supadata import Supadata, SupadataError
 
 # Matches the video ID out of the common YouTube URL shapes:
 #   https://www.youtube.com/watch?v=VIDEOID
@@ -47,35 +49,48 @@ def extract_video_id(youtube_url: str) -> str:
     return match.group(1)
 
 
+def _get_client() -> Supadata:
+    api_key = os.environ.get("SUPADATA_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "SUPADATA_API_KEY is not set. Add it to your environment "
+            "(see .env.example)."
+        )
+    return Supadata(api_key=api_key)
+
+
 def get_transcript(video_id: str) -> str:
+    supadata = _get_client()
+
     try:
-        ytt_api = YouTubeTranscriptApi()
-        transcript_segments = ytt_api.fetch(video_id)
+        result = supadata.transcript(
+            url=f"https://www.youtube.com/watch?v={video_id}",
+            text=True,      # return plain text instead of timestamped chunks
+            mode="auto",    # fall back to AI transcription if there's no caption track
+        )
 
-    except (NoTranscriptFound, TranscriptsDisabled) as exc:
+    except SupadataError as exc:
+        error_code = getattr(exc, "error", "") or ""
+
+        if error_code in {"video-not-found", "video-unavailable"}:
+            raise TranscriptUnavailableError(
+                "That video couldn't be found. It may be private, deleted, or "
+                "the URL may be incorrect."
+            ) from exc
+
+        if error_code in {"transcript-unavailable", "no-transcript"}:
+            raise TranscriptUnavailableError(
+                "This video doesn't have captions available, so a transcript "
+                "can't be extracted. Try a different video."
+            ) from exc
+
         raise TranscriptUnavailableError(
-            "This video doesn't have captions available, so a transcript "
-            "can't be extracted. Try a different video."
+            f"Transcript retrieval failed: {exc.message}"
         ) from exc
 
-    except VideoUnavailable as exc:
-        raise TranscriptUnavailableError(
-            "That video couldn't be found. It may be private, deleted, or "
-            "the URL may be incorrect."
-        ) from exc
+    full_text = (result.content or "").strip()
 
-    except RequestBlocked as exc:
-        raise TranscriptUnavailableError(
-            "YouTube blocked transcript retrieval from the deployment server. "
-            "This is a limitation of the hosting environment, not your video."
-        ) from exc
-
-    full_text = " ".join(
-        segment.text
-        for segment in transcript_segments
-    )
-
-    if not full_text.strip():
+    if not full_text:
         raise TranscriptUnavailableError(
             "The transcript for this video came back empty."
         )
