@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-6 sm:h-screen sm:overflow-hidden sm:py-8">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-6 sm:h-[calc(100vh-3.5rem)] sm:overflow-hidden sm:py-8">
       {/* Status bar */}
       <div className="mb-3 flex shrink-0 items-center justify-between border-b border-border pb-2 font-mono text-[11px] uppercase tracking-console text-steel">
         <span className="flex items-center gap-2">
@@ -52,6 +52,10 @@ export default function Home() {
         <h1 className="phosphor-glow text-2xl font-bold tracking-tight text-white sm:text-3xl">
           PROMPT<span className="text-accent">[TUBE]</span>
         </h1>
+
+        <p className="font-mono text-[10px] uppercase tracking-console text-steel/60 sm:text-[11px]">
+          Decode any broadcast into a queryable signal.
+        </p>
 
         <p className="w-full whitespace-nowrap text-center font-mono text-[11px] text-steel sm:text-sm">
           Paste a broadcast URL. Ask it anything. It answers from the transcript.
