@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { PromptForm } from "@/components/PromptForm";
 import { ResponseDisplay } from "@/components/ResponseDisplay";
-import { About } from "@/components/Abouts";
+import { About } from "@/components/About";
 import { Footer } from "@/components/Footer";
 import { ApiError, generate } from "@/lib/api";
 
