@@ -23,7 +23,7 @@ const STEPS = [
 
 const STACK = ["Next.js", "FastAPI", "Supadata", "Groq API", "Vercel"];
 
-export function AboutSection() {
+export function About() {
   return (
     <section
       id="about"

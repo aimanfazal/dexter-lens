@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { PromptForm } from "@/components/PromptForm";
 import { ResponseDisplay } from "@/components/ResponseDisplay";
-import { AboutSection } from "@/components/AboutSection";
+import { About } from "@/components/Abouts";
 import { Footer } from "@/components/Footer";
 import { ApiError, generate } from "@/lib/api";
 
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </main>
 
-      <AboutSection />
+      <About />
       <Footer />
     </>
   );
