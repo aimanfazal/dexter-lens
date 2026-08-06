@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const STEPS = [
   {
     number: "01",
@@ -21,7 +23,12 @@ const STEPS = [
   },
 ];
 
-const STACK = ["Next.js", "FastAPI", "Supadata", "Groq API", "Vercel"];
+const STACK = [
+  { name: "Next.js", href: "https://nextjs.org" },
+  { name: "FastAPI", href: "https://fastapi.tiangolo.com" },
+  { name: "Supadata", href: "https://supadata.ai" },
+  { name: "Groq API", href: "https://x.ai" },
+];
 
 export function About() {
   return (
@@ -50,12 +57,15 @@ export function About() {
         </span>
         <div className="mt-3 flex flex-wrap gap-2">
           {STACK.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-sm border border-border px-2.5 py-1 font-mono text-[11px] text-white/70"
+            <Link
+              key={tech.name}
+              href={tech.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm border border-border px-2.5 py-1 font-mono text-[11px] text-white/70 hover:text-accent"
             >
-              {tech}
-            </span>
+              {tech.name}
+            </Link>
           ))}
         </div>
       </div>
