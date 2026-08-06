@@ -45,7 +45,7 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="normal-case text-white/30">Made by Aiman Fazal</p>
+        <p className="normal-case text-white/40 hover:text-white">Made by Aiman Fazal</p>
       </div>
     </footer>
   );
