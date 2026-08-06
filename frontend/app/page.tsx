@@ -56,11 +56,11 @@ export default function Home() {
             PROMPT<span className="text-accent">[TUBE]</span>
           </h1>
 
-          <p className="font-mono text-[10px] uppercase tracking-console text-steel/60 sm:text-[11px]">
+            <p className="font-mono text-[10px] text-center uppercase tracking-console text-steel/60 sm:text-[11px]">
             Decode any broadcast into a queryable signal.
           </p>
 
-          <p className="w-full whitespace-nowrap text-center font-mono text-[11px] text-steel sm:text-sm">
+          <p className="w-full text-center font-mono text-[11px] text-steel sm:text-sm">
             Paste a broadcast URL. Ask it anything. It answers from the transcript.
           </p>
         </header>
