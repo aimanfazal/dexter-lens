@@ -34,7 +34,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="mx-auto mt-10 w-full max-w-5xl scroll-mt-14 px-6 py-10 sm:mt-16 sm:px-10 sm:py-14"
+      className="mx-auto mt-10 w-full max-w-5xl scroll-mt-14 px-6 py-10 sm:mt-10 sm:px-10 sm:py-10"
     >
       <span className="font-mono text-[11px] uppercase tracking-console text-steel">
         <span className="text-accent">//</span> How it works
@@ -51,11 +51,11 @@ export function About() {
         ))}
       </div>
 
-      <div className="mt-10 border-t border-border pt-6">
+      <div className="flex flex-col mt-10 border-border pt-6 items-center">
         <span className="font-mono text-[11px] uppercase tracking-console text-steel">
           Built with
         </span>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-6">
           {STACK.map((tech) => (
             <Link
               key={tech.name}
