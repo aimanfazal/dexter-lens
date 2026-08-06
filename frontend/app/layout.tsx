@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 
 const mono = IBM_Plex_Mono({
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${mono.variable} ${sans.variable}`}>
       <body className="font-sans">
         <div className="scanlines" aria-hidden="true" />
+        <Navbar />
         {children}
       </body>
     </html>
