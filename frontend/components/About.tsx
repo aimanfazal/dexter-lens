@@ -27,7 +27,7 @@ const STACK = [
   { name: "Next.js", href: "https://nextjs.org" },
   { name: "FastAPI", href: "https://fastapi.tiangolo.com" },
   { name: "Supadata", href: "https://supadata.ai" },
-  { name: "Groq API", href: "https://x.ai" },
+  { name: "Groq API", href: "https://groq.com/" },
 ];
 
 export function About() {
