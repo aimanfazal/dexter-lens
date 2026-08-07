@@ -16,7 +16,7 @@ Turn YouTube videos and Shorts into interactive, promptable knowledge. Paste a Y
 </p>
 
 <p align="center">
-  <a href="https://prompt-tube.vercel.app"><strong>Live Demo</strong></a>
+  <a href="https://dexter-lens.vercel.app/"><strong>Live Demo</strong></a>
   •
   <a href="https://prompt-tube.onrender.com/docs"><strong>API Docs</strong></a>
   •
