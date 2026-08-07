@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎥 PromptTube
+# 🎥 DexterLens
 
 ### AI-powered conversations with any YouTube video
 
@@ -20,7 +20,7 @@ Turn YouTube videos and Shorts into interactive, promptable knowledge. Paste a Y
   •
   <a href="https://prompt-tube.onrender.com/docs"><strong>API Docs</strong></a>
   •
-  <a href="https://github.com/aimanfazal/prompt-tube/issues"><strong>Report Bug</strong></a>
+  <a href="https://github.com/aimanfazal/dexter-lens/issues"><strong>Report Bug</strong></a>
 </p>
 
 </div>
@@ -29,9 +29,9 @@ Turn YouTube videos and Shorts into interactive, promptable knowledge. Paste a Y
 
 ## Overview
 
-PromptTube is a full-stack AI application that transforms YouTube videos into interactive, promptable knowledge.
+DexterLens is a full-stack AI application that transforms YouTube videos into interactive, promptable knowledge.
 
-Instead of searching through an entire video manually, simply paste a YouTube video (or Shorts) URL, provide an optional prompt, and PromptTube will retrieve the transcript, combine it with your request, and generate responses grounded entirely in the video's content.
+Instead of searching through an entire video manually, simply paste a YouTube video (or Shorts) URL, provide an optional prompt, and DexterLens will retrieve the transcript, combine it with your request, and generate responses grounded entirely in the video's content.
 
 The application uses the **Supadata API** for transcript retrieval and **Groq's Llama 3.3** models for AI-powered responses.
 
@@ -40,7 +40,7 @@ The application uses the **Supadata API** for transcript retrieval and **Groq's 
 ## Screenshots
 
 <div align="center">
-  <img src="docs/screenshots/prompttube-v2.png" width="900" alt="PromptTube signal console UI">
+  <img src="docs/screenshots/DexterLens-v2.png" width="900" alt="DexterLens signal console UI">
 </div>
 
 > A short demo GIF will be added in a future release.
@@ -128,7 +128,7 @@ Frontend Console
 <br>
 
 ```text
-prompt-tube/
+dexter-lens/
 │
 ├── backend/
 │   ├── app/
@@ -197,7 +197,7 @@ FRONTEND_ORIGIN=http://localhost:3000
 ### 4. Start the backend
 
 ```bash
-uvicorn app.main:app --reload --reload-dir app
+uvicorn app.main:app --reload
 ```
 
 Backend
@@ -255,7 +255,7 @@ http://localhost:3000
 
 ## Deployment
 
-PromptTube is deployed as a split full-stack application.
+DexterLens is deployed as a split full-stack application.
 
 | Service | Platform |
 |----------|----------|
@@ -285,7 +285,7 @@ Planned improvements for future releases include:
 
 ## Development Process
 
-PromptTube was built using an AI-assisted development workflow ("vibe coding") combined with manual engineering, debugging, deployment, and architectural decisions.
+DexterLens was built using an AI-assisted development workflow ("vibe coding") combined with manual engineering, debugging, deployment, and architectural decisions.
 
 Some of the challenges solved during development include:
 
@@ -331,6 +331,6 @@ This project is licensed under the MIT License.
 
 <br><br>
 
-⭐ If you found PromptTube useful, consider giving the repository a star!
+⭐ If you found DexterLens useful, consider giving the repository a star!
 
 </div>

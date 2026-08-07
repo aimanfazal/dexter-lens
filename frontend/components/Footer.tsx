@@ -1,6 +1,6 @@
 // TODO (you): same repo URL as components/Navbar.tsx — worth centralizing
 // into one constant once you have a real repo to point at.
-const GITHUB_URL = "https://github.com/aimanfazal/prompt-tube";
+const GITHUB_URL = "https://github.com/aimanfazal/dexter-lens";
 const LINKEDIN_URL = "https://www.linkedin.com/in/aimanfazal";
 const EMAIL_ID = "voidaiman.dev@gmail.com";
 

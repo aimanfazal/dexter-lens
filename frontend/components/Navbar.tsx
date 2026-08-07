@@ -1,5 +1,5 @@
 // TODO (you): point this at your actual repo before deploying the navbar.
-const GITHUB_URL = "https://github.com/aimanfazal/prompt-tube";
+const GITHUB_URL = "https://github.com/aimanfazal/dexter-lens";
 
 function GitHubIcon() {
   return (
@@ -19,7 +19,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-40 flex h-14 w-full shrink-0 items-center justify-between border-b border-border bg-canvas/85 px-6 backdrop-blur-sm sm:px-10">
       <span className="font-mono text-sm font-medium uppercase tracking-console text-white">
-        Prompt<span className="text-accent">[Tube]</span>
+        Dexter<span className="text-accent">Lens</span>
       </span>
 
       <div className="flex items-center gap-5 font-mono text-[11px] uppercase tracking-console text-steel">

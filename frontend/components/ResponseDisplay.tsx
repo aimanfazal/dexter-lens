@@ -92,7 +92,7 @@ export function ResponseDisplay({
         cursorY += lineHeight;
       });
 
-      doc.save("prompttube-response.pdf");
+      doc.save("dexterlens-response.pdf");
     } finally {
       setIsExporting(false);
     }

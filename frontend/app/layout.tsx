@@ -16,7 +16,7 @@ const sans = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "PromptTube",
+  title: "DexterLens",
   description: "Turn a YouTube video into a queryable signal.",
 };
 

@@ -4,7 +4,7 @@ const STEPS = [
   {
     number: "01",
     title: "Paste a YouTube URL",
-    body: "PromptTube retrieves the video's transcript.",
+    body: "DexterLens retrieves the video's transcript.",
   },
   {
     number: "02",

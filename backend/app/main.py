@@ -21,7 +21,7 @@ load_dotenv()
 from app.api.generate import router as generate_router  # noqa: E402
 
 app = FastAPI(
-    title="PromptTube API",
+    title="DexterLens API",
     description="Turns a YouTube video's transcript into a promptable text source.",
     version="0.1.0",
 )
@@ -50,7 +50,7 @@ def health_check() -> dict[str, str]:
 @app.get("/")
 def root():
     return {
-        "message": "PromptTube API is running 🚀",
+        "message": "DexterLens API is running 🚀",
         "docs": "/docs",
         "health": "/health"
     }
