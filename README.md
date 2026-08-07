@@ -40,7 +40,7 @@ The application uses the **Supadata API** for transcript retrieval and **Groq's 
 ## Screenshots
 
 <div align="center">
-  <img src="docs/screenshots/DexterLens-v2.png" width="900" alt="DexterLens signal console UI">
+  <img src="docs/screenshots/dexter-lens-v1.1.0.png" width="900" alt="DexterLens signal console UI">
 </div>
 
 > A short demo GIF will be added in a future release.
