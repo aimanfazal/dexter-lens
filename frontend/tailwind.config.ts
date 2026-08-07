@@ -28,6 +28,19 @@ const config: Config = {
       boxShadow: {
         glow: "0 0 16px rgba(255, 159, 28, 0.35)",
       },
+      keyframes: {
+        dotPulse: {
+          '0%, 100%': {
+            backgroundColor: '#2A343E',
+          },
+          '50%': {
+            backgroundColor: '#fff',
+          },
+        },
+      },
+      animation: {
+        'dot-pulse': 'dotPulse 1.5s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
