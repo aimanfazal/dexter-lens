@@ -51,19 +51,24 @@ export default function Home() {
           <span className="bracket-tr" aria-hidden="true" />
           <span className="bracket-bl" aria-hidden="true" />
 
-         <header className="mb-4 flex shrink-0 flex-col items-center gap-1">
-          <h1 className="phosphor-glow text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            PROMPT<span className="text-accent">[TUBE]</span>
-          </h1>
+          <header className="mb-4 flex shrink-0 flex-col items-center gap-1">
+            <div className="flex items-center justify-center gap-3">
+              <span className="relative flex h-6 w-6 items-center justify-center rounded-full border border-accent/60">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-dot-pulse" />
+              </span>
+              <h1 className="phosphor-glow text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                DEXTER<span className="text-accent">LENS</span>
+              </h1>
+            </div>
 
             <p className="font-mono text-[10px] text-center uppercase tracking-console text-steel/60 sm:text-[11px]">
-            Decode any broadcast into a queryable signal.
-          </p>
+              Decode any broadcast into a queryable signal.
+            </p>
 
-          <p className="w-full text-center font-mono text-[11px] text-steel sm:text-sm">
-            Paste a broadcast URL. Ask it anything. It answers from the transcript.
-          </p>
-        </header>
+            <p className="w-full text-center font-mono text-[11px] text-steel sm:text-sm">
+              Paste a broadcast URL. Ask it anything. It answers from the transcript.
+            </p>
+          </header>
 
           <div className="shrink-0">
             <PromptForm
