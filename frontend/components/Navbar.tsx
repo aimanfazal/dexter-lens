@@ -24,7 +24,7 @@ export function Navbar() {
 
       <div className="flex items-center gap-5 font-mono text-[11px] uppercase tracking-console text-steel">
         <a
-          href="#about"
+          href="#abut"
           className="transition-colors hover:text-accent"
         >
           About

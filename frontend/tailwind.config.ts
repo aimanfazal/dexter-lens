@@ -8,7 +8,7 @@ const config: Config = {
         // A single restrained accent — amber phosphor, used sparingly (the
         // "Decode signal" button, focus rings, station labels, and glow).
         accent: {
-          DEFAULT: "#FF9F1C",
+          DEFAULT: "#E5484D",
           hover: "#FFB74D",
         },
         canvas: "#0C1116",

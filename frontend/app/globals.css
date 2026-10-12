@@ -136,7 +136,7 @@ body {
 
 /* REC indicator dot in the status bar. */
 .rec-dot {
-  animation: rec-pulse 2s ease-in-out infinite;
+  animation: rec-pulse 0.1s ease-in-out infinite;
 }
 
 @keyframes rec-pulse {

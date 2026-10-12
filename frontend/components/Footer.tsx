@@ -32,7 +32,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="transition-colors hover:text-accent"
           >
-            LinkedIn
+            Twitter
 
           </a>
           <a

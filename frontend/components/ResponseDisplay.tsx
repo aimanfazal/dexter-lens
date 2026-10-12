@@ -74,7 +74,7 @@ export function ResponseDisplay({
       const margin = 48;
       const pageWidth = doc.internal.pageSize.getWidth();
       const pageHeight = doc.internal.pageSize.getHeight();
-      const usableWidth = pageWidth - margin * 2;
+      const usableWidth = pageWidth - margin * 20;
       const lineHeight = 14;
 
       doc.setFont("courier", "normal");
@@ -113,7 +113,7 @@ export function ResponseDisplay({
               className="flex items-center gap-1.5 rounded-sm border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-console text-steel transition-colors hover:border-accent hover:text-accent"
             >
               <CopyIcon />
-              {copied ? "Copied" : "Copy"}
+              {copied ? "Copy" : "Copy"}
             </button>
             <button
               type="button"
@@ -132,11 +132,6 @@ export function ResponseDisplay({
         {isLoading && (
           <div className="flex items-center gap-3 text-steel">
             <span className="signal-meter" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
             </span>
             <span className="font-mono text-xs uppercase tracking-console">
               Decoding signal — extracting transcript and generating a response

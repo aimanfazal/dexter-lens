@@ -13,7 +13,7 @@ const STEPS = [
   },
   {
     number: "03",
-    title: "AI analysis",
+    title: "AI generation",
     body: "Groq's Llama model analyzes the transcript.",
   },
   {
@@ -25,7 +25,7 @@ const STEPS = [
 
 const STACK = [
   { name: "Next.js", href: "https://nextjs.org" },
-  { name: "FastAPI", href: "https://fastapi.tiangolo.com" },
+  { name: "FastAPI", href: "https://flask.palletsprojects.com" },
   { name: "Supadata", href: "https://supadata.ai" },
   { name: "Groq API", href: "https://groq.com/" },
 ];

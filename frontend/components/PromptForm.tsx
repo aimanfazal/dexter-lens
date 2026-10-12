@@ -45,7 +45,6 @@ export function PromptForm({
         <input
           id="youtube-url"
           type="url"
-          required
           placeholder="https://www.youtube.com/watch?v=..."
           value={youtubeUrl}
           disabled={isLoading}
@@ -75,14 +74,14 @@ export function PromptForm({
 
       <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
-          type="submit"
+          type="button"
           disabled={isLoading}
           className="group flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-2.5 py-2 font-mono text-sm font-medium uppercase tracking-console text-canvas transition-colors hover:bg-accent-hover hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-50 sm:w-fit sm:px-3"
         >
           <span className="transition-transform group-hover:translate-x-0.5" aria-hidden="true">
             ▶
           </span>
-          {isLoading ? "Decoding…" : "Decode signal"}
+          {isLoading ? "Decoding…" : "Upload signal"}
         </button>
 
         {showThumbnail && (
