@@ -2,7 +2,7 @@
 
 # 🎥 DexterLens
 
-### AI-powered conversations with any YouTube video
+### AI-powered conversations with any YouTube
 
 Turn YouTube videos and Shorts into interactive, promptable knowledge. Paste a YouTube URL, ask a question, and receive AI-generated responses grounded entirely in the video's transcript through a retro-futuristic signal console interface.
 
